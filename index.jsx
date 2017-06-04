@@ -29,7 +29,7 @@ class Websocket extends React.Component {
       
       websocket.onopen = () => {
         this.logging('Websocket connected');
-        if (this.props.msgOnConnect){
+        if (this.props.msgOnConnect && this.props.msgOnConnect !== ""){
             websocket.send(this.props.msgOnConnect);
         }
       };
