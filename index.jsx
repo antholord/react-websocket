@@ -29,6 +29,9 @@ class Websocket extends React.Component {
       
       websocket.onopen = () => {
         this.logging('Websocket connected');
+        if (this.props.msgOnConnect){
+            websocket.send(this.props.msgOnConnect);
+        }
       };
 
       websocket.onmessage = (evt) => {
@@ -74,6 +77,7 @@ Websocket.defaultProps = {
 Websocket.propTypes = {
     url: PropTypes.string.isRequired,
     onMessage: PropTypes.func.isRequired,
+    msgOnConnect: PropTypes.string,
     debug: PropTypes.bool,
     reconnect: PropTypes.bool,
     protocol: PropTypes.string,
